@@ -107,6 +107,8 @@ The following items should be installed in your system:
     git clone https://github.com/spring-projects/spring-petclinic.git
     ```
 
+
+
 1. Inside Eclipse or STS:
 
     Open the project via `File -> Import -> Maven -> Existing Maven project`, then select the root directory of the cloned repo.
