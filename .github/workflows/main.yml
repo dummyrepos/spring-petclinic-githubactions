@@ -1,0 +1,14 @@
+---
+name: ci-worflow
+on: 
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    name: build java code using maven
+    runs-on: ubuntu-24.04
+    steps:
+      - name: get the code
+        uses: actions/checkout@v4
+        
