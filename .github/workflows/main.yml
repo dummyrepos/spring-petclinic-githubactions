@@ -19,3 +19,9 @@ jobs:
           distribution: temurin
       - name: execute clean package
         run: ./mvnw package
+      - name: upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: spc-artifact
+          path: "**/.jar"
+        
