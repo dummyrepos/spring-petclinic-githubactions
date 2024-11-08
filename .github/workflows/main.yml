@@ -16,5 +16,6 @@ jobs:
         uses: actions/setup-java@v4.5.0
         with:
           java-version: 17
+          distribution: temurin
       - name: execute clean package
         run: ./mvnw package
