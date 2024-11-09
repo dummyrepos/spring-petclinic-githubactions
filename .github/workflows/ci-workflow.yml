@@ -25,7 +25,7 @@ jobs:
           restore-keys: |
             ${{ runner.os  }}-m2
       - name: execute clean package
-        run: ./mvnw package
+        run: ./mvnw ${{ vars.GOAL }}
       - name: Junit Test Dashboard
         uses: janisz/action@v2
         with:
