@@ -36,7 +36,7 @@ There is no `Dockerfile` in this project. You can build a container image (if yo
 ```bash
 ./mvnw spring-boot:build-image
 ```
-
+        
 ## In case you find a bug/suggested improvement for Spring Petclinic
 
 Our issue tracker is available [here](https://github.com/spring-projects/spring-petclinic/issues).
@@ -162,3 +162,4 @@ For pull requests, editor preferences are available in the [editor config](.edit
 ## License
 
 The Spring PetClinic sample application is released under version 2.0 of the [Apache License](https://www.apache.org/licenses/LICENSE-2.0).
+
