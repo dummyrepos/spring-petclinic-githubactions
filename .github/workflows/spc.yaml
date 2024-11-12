@@ -2,6 +2,8 @@ name: spc build
 on: push
 env:
   owner: Production
+  environment: Quality Analysis
+  Version: v1.0
 jobs:
    build:
      runs-on: ubuntu-latest
@@ -15,5 +17,8 @@ jobs:
        - name: maven build
          run: ./mvnw -B verify
        - name: adding environmental variables
-         run: echo "The owner of the build is $owner"
-         
+         run: |
+           echo "The owner of the build is $owner"
+           echo "The Environment is $environment"
+           echo "The version of the product is $Version"
+           
