@@ -21,4 +21,4 @@ jobs:
            echo "The owner of the build is $owner"
            echo "The Environment is $environment"
            echo "The version of the product is $Version"
-           echo "Information regarding project $DATE"
+           echo "Information regarding project ${{ vars.DATE }}"
