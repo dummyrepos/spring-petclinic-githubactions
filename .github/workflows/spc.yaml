@@ -17,8 +17,8 @@ jobs:
            distribution: 'temurin'
            java-version: '17'
            cache: maven
-      #  - name: maven build
-      #    run: ./mvnw -B verify
+       - name: maven build
+         run: ./mvnw -B verify
        - name: adding environmental variables
          run: |
            echo "The owner of the build is $owner"
@@ -26,7 +26,7 @@ jobs:
            echo "The version of the product is $Version"
            echo "Information regarding project ${{ vars.DATE }}"
        - name: sonar-scan 
-         uses: sonarsource/sonarqube-scan-action@v4.0.0
+         uses: Sonarource/sonarqube-scan-action@v4.0.0
          env:
            SONAR_TOCKEN: ${{ secrets.SONAR_TOCKEN }}
            SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
@@ -35,5 +35,5 @@ jobs:
             -Dsonar.organization=konduriakhil
             -Dsonar.projectKey=konduriakhil_spring-petclinic-githubactions
 
-            
+
            
