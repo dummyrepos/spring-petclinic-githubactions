@@ -35,4 +35,5 @@ jobs:
             -Dsonar.organization=konduriakhil
             -Dsonar.projectKey=konduriakhil_spring-petclinic-githubactions
 
+            
            
