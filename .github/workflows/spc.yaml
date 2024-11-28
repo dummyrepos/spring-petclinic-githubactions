@@ -34,8 +34,6 @@ jobs:
          with:
           args: >
             -Dsonar.organization=konduriakhil
-            -Dsonar.projectKey=konduriakhil_spring-petclinic-githubactions
-            -Dsonar.java.binaries=target/classes
-
+            -Dsonar.projectKey=konduriakhil
 
            
