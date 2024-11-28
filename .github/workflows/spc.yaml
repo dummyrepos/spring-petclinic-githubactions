@@ -27,5 +27,9 @@ jobs:
          env:
            SONAR_TOCKEN: ${{ secrets.SONAR_TOCKEN }}
            SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
+         with:
+          args: >
+            -Dsonar.organization=konduriakhil
+            -Dsonar.projectKey=konduriakhil_spring-petclinic-githubactions
 
            
