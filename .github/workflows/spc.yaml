@@ -19,7 +19,7 @@ jobs:
            cache: maven
        - name: maven build
          run: ./mvnw -B verify
-         
+
        - name: adding environmental variables
          run: |
            echo "The owner of the build is $owner"
@@ -27,7 +27,7 @@ jobs:
            echo "The version of the product is $Version"
            echo "Information regarding project ${{ vars.DATE }}"
        - name: sonar-scan 
-         uses: Sonarource/sonarqube-scan-action@v4.0.0
+         uses: sonarsource/sonarqube-scan-action@v4.0.0
          env:
            SONAR_TOCKEN: ${{ secrets.SONAR_TOCKEN }}
            SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
