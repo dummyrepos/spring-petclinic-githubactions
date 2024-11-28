@@ -19,6 +19,7 @@ jobs:
            cache: maven
        - name: maven build
          run: ./mvnw -B verify
+         
        - name: adding environmental variables
          run: |
            echo "The owner of the build is $owner"
