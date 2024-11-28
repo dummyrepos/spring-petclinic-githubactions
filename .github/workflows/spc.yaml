@@ -1,40 +1,26 @@
-name: spc build
+name: SonarQube Analysis
+
 on:
   push:
     branches:
-      - akhil 
-env:
-  owner: Akhil
-  environment: Quality Analysis
-  Version: v1.0
+      - akhil
+
 jobs:
-   build:
-     runs-on: ubuntu-latest
-     steps:
-       - uses: actions/checkout@v4
-       - uses: actions/setup-java@v4
-         with:
-           distribution: 'temurin'
-           java-version: '17'
-           cache: maven
-       - name: maven build
-         run: mvn package
+  sonar-analysis:
+    runs-on: ubuntu-latest
 
-       - name: adding environmental variables
-         run: |
-           echo "The owner of the build is $owner"
-           echo "The Environment is $environment"
-           echo "The version of the product is $Version"
-           echo "Information regarding project ${{ vars.DATE }}"
-       - name: sonar-scan 
-         uses: sonarsource/sonarqube-scan-action@v4.0.0
-         env:
-           SONAR_TOCKEN: ${{ secrets.SONAR_TOCKEN }}
-           SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
-         with:
-          args: >
-            -Dsonar.organization=konduriakhil
-            -Dsonar.projectKey=konduriakhil_spring-petclinic-githubactions
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
+      # Compile the project
+      - name: Build the project
+        run: mvn package
 
-           
+      # Run SonarScanner
+      - name: Run Sonar Scanner
+        run: |
+          sonar-scanner \
+            -Dsonar.organization=konduriakhil \
+            -Dsonar.projectKey=konduriakhil_spring-petclinic-githubactions \
+            -Dsonar.java.binaries=target/classes
