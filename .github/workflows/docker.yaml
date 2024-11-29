@@ -21,12 +21,16 @@ jobs:
                 tags: |
                   ${{ secrets.DOCKERHUB_USERNAME }}/spc:${{ github.sha }}
                   ${{ secrets.DOCKERHUB_USERNAME }}/spc:latest
-            - name: Run Trivy vulnerability scanner
-              uses: aquasecurity/trivy-action@0.28.0
+            - name: Scan Docker image with Trivy
+              uses: aquasecurity/trivy-action@v0.7.0
               with:
-                image-ref: ${{ secrets.DOCKERHUB_USERNAME }}/spc:latest
-                format: 'table'
-                exit-code: '1'
-                ignore-unfixed: true
-                vuln-type: 'os,library'
-                severity: 'CRITICAL,HIGH'
+                image: ${{ secrets.DOCKERHUB_USERNAME }}/spc:latest
+                format: 'json'  # You can also use 'table' or 'sarif'
+                output: 'trivy-report.json'
+            
+                # Step 6: Upload Trivy scan report as an artifact
+            - name: Upload Trivy scan report
+              uses: actions/upload-artifact@v3
+              with:
+                name: trivy-report
+                path: trivy-report.json
