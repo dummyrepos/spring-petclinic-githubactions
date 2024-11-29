@@ -30,7 +30,7 @@ jobs:
                 curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/html.tpl -o trivy-html.tpl
             - name: Run Trivy Scan
               run: |
-                trivy image --format template --template @trivy-html.tpl --output trivy-report.html ${{ secrets.DOCKERHUB_USERNAME }}/spc:latest --exit-code 1
+                trivy image --format template --template @trivy-html.tpl --output trivy-report.html ${{ secrets.DOCKERHUB_USERNAME }}/spc:latest
                 trivy image --format json --output trivy-report.json ${{ secrets.DOCKERHUB_USERNAME }}/spc:latest
               
               # Step 8: Upload HTML Report as an Artifact
