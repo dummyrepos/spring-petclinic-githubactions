@@ -23,8 +23,8 @@ jobs:
                   ${{ secrets.DOCKERHUB_USERNAME }}/spc:latest
             - name: Installing trivy
               run: |
-                wget https://github.com/aquasecurity/trivy/releases/download/v0.18.3/trivy_0.18.3_Linux-64bit.deb
-                sudo dpkg -i trivy_0.18.3_Linux-64bit.deb
+                wget https://github.com/aquasecurity/trivy/releases/download/v0.20.2/trivy_0.20.2_Linux-64bit.deb
+                sudo dpkg -i trivy_0.20.2_Linux-64bit.deb
 
             - name: Download HTML Template
               run: |
