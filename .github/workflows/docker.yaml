@@ -21,6 +21,14 @@ jobs:
                 tags: |
                   ${{ secrets.DOCKERHUB_USERNAME }}/spc:${{ github.sha }}
                   ${{ secrets.DOCKERHUB_USERNAME }}/spc:latest
+            - name: Installing trivy
+              run: |
+                wget https://github.com/aquasecurity/trivy/releases/download/v0.18.3/trivy_0.18.3_Linux-64bit.deb
+                sudo dpkg -i trivy_0.18.3_Linux-64bit.deb
+
+            - name: Download HTML Template
+              run: |
+                curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/html.tpl -o trivy-html.tpl
             - name: Run Trivy Scan
               run: |
                 trivy image --format template --template @trivy-html.tpl --output trivy-report.html ${{ secrets.DOCKERHUB_USERNAME }}/spc:latest
