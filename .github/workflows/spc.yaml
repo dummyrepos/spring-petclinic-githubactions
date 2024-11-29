@@ -2,7 +2,7 @@ name: spc build
 on:
   push:
     branches:
-      - akhil 
+      - main
 env:
   owner: Akhil
   environment: Quality Analysis
