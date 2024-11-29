@@ -23,8 +23,8 @@ jobs:
                   ${{ secrets.DOCKERHUB_USERNAME }}/spc:latest
             - name: Run Trivy Scan
               run: |
-                trivy image --format template --template @trivy-html.tpl --output trivy-report.html spc:${{ github.run_number }}
-                trivy image --format json --output trivy-report.json spc:${{ github.run_number }}
+                trivy image --format template --template @trivy-html.tpl --output trivy-report.html ${{ secrets.DOCKERHUB_USERNAME }}/spc:latest
+                trivy image --format json --output trivy-report.json ${{ secrets.DOCKERHUB_USERNAME }}/spc:latest
               
               # Step 8: Upload HTML Report as an Artifact
             - name: Upload Trivy HTML Report
