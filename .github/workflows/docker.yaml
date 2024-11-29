@@ -19,7 +19,6 @@ jobs:
               with:
                 push: false
                 tags: |
-                  ${{ secrets.DOCKERHUB_USERNAME }}/spc:${{ github.sha }}
                   ${{ secrets.DOCKERHUB_USERNAME }}/spc:latest
             - name: Installing trivy
               run: |
