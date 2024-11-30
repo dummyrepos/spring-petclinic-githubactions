@@ -1,0 +1,32 @@
+name: "CodeQL Analysis"
+
+on:
+  push:
+    branches:
+      - akhil  # Trigger workflow on push to the main branch
+  pull_request:
+    branches:
+      - main  # Trigger workflow on pull requests to the main branch
+
+jobs:
+  analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Initialize CodeQL
+      - name: Set up CodeQL
+        uses: github/codeql-action/setup-codeql@v2
+
+      # Initialize the CodeQL database
+      - name: Analyze code with CodeQL
+        uses: github/codeql-action/analyze@v2
+
+      # Upload the CodeQL results
+      - name: Upload CodeQL results
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: './codeql-results.sarif'
